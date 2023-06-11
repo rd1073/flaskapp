@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome {{session['username']}}</h1>
+    <a href="/logout">Logout</a>
+    <!--createa new task-->
+    <h1>Create a new task</h1>
+
+    <form method="POST" action="/create">
+        <label>Title</label>
+        <input type="text" name="title"><br>
+        <label>Description</label>
+        <input type="text" name="desc"><br>
+        <label>Due Date</label>
+        <input type="date" name="duedate"><br>
+        <label>Status</label>
+        <input type="text" name="status"><br>
+        <input type="submit" value="Create Task">
+ 
+    </form>
+
+    <!--retrieve task by the id-->
+    <form method="POST" action="/ret">
+        <label>Task ID</label>
+        <input type="number" name="taskid"><br>
+        <input type="submit" value="Retrieve Task">
+    
+        {% if task %}
+    <h2>ID {{task[0]}}</h2>
+    <h2>Title {{task[1]}}</h2>
+    <h2>Description {{task[2]}}</h2>
+    <h2>Due Date {{task[3]}}</h2>
+    <h2>Status {{task[4]}}</h2>
+    </form>
+    {% endif %}
+    
+    <!-- Update an existing task -->
+<h1>Update Task</h1>
+
+<form method="POST" action="/update">
+    <label>Task ID</label>
+    <input type="number" name="taskid"><br>
+    <label>Title</label>
+    <input type="text" name="title"><br>
+    <label>Description</label>
+    <input type="text" name="desc"><br>
+    <label>Due Date</label>
+    <input type="date" name="duedate"><br>
+    <label>Status</label>
+    <input type="text" name="status"><br>
+    <input type="submit" value="Update Task">
+</form>
+
+<!-- delete a task-->
+<form method="POST" action="/del">
+    <label>Task ID</label>
+    <input type="number" name="taskid"><br>
+    <input type="submit" value="Delete">
+
+</form>
+
+
+
+
+ </body>
+</html>
